@@ -8,7 +8,7 @@
 
             if (!IsValid(operatorId, name, apiEndpoint, validationErrors))
             {
-                throw new ArgumentException(validationErrors.ToString());
+                throw new ArgumentException(validationErrors.ToValidationString());
             }
 
             OperatorId = operatorId;

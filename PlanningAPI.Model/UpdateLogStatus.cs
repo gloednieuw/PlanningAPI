@@ -8,7 +8,7 @@ namespace PlanningAPI.Model
 {
     public enum UpdateLogStatus
     {
-        OnTime,
+        OnTime = 1,
         Early,
         Late,
         Cancelled

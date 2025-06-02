@@ -11,7 +11,7 @@ namespace PlanningAPI.Model
 
             if (!IsValid(tripId, lineNo, departureTime, arrivalTime, validationErrors))
             {
-                throw new ArgumentException(validationErrors.ToString());
+                throw new ArgumentException(validationErrors.ToValidationString());
             }
 
             TripId = tripId;

@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using PlanningAPI.Model;
+using PlanningAPI.Service;
+using PlanningAPI.Service.Dto;
 
 namespace PlanningAPI.Controllers
 {
@@ -6,23 +9,25 @@ namespace PlanningAPI.Controllers
     [Route("[controller]")]
     public class OperatorController : ControllerBase
     {
-        //private readonly ILogger<WeatherForecastController> _logger;
+        private readonly OperatorService _service;
+        private readonly DomainServices _domainServices;
 
-        public OperatorController()
+        public OperatorController(OperatorService service, DomainServices domainServices)
         {
-
+            _service = service;
+            _domainServices = domainServices;
         }
 
-        //[HttpGet(Name = "GetWeatherForecast")]
-        //public IEnumerable<WeatherForecast> Get()
-        //{
-        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        //    {
-        //        Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-        //        TemperatureC = Random.Shared.Next(-20, 55),
-        //        Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        //    })
-        //    .ToArray();
-        //}
+        [HttpGet]
+        public async Task<IEnumerable<OperatorListDto>> Get()
+        {
+            return await _service.GetAllOperators();
+        }
+
+        [HttpGet("Details")]
+        public async Task<OperatorViewDto> Details([FromQuery] int operatorId)
+        {
+            return await _service.GetOperatorDetails(operatorId);
+        }
     }
 }

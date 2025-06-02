@@ -20,6 +20,8 @@ namespace PlanningAPI
             builder.Services.AddSwagger();
             builder.Services.AddCustomServices(config);
 
+            builder.Services.AddHostedService<ExternalEventListener>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

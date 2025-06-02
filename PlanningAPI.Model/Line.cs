@@ -8,7 +8,7 @@
 
             if (!IsValid(lineId, operatorNo, linePlanningNumber, validationErrors))
             {
-                throw new ArgumentException(validationErrors.ToString());
+                throw new ArgumentException(validationErrors.ToValidationString());
             }
 
             LineId = lineId;

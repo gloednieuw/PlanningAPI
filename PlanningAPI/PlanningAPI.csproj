@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PlanningAPI.Infrastructure\PlanningAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\PlanningAPI.Service\PlanningAPI.Service.csproj" />
   </ItemGroup>
 
 </Project>

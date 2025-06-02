@@ -5,6 +5,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using PlanningAPI.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using PlanningAPI.Model;
+using System;
+using PlanningAPI.Service;
 
 namespace PlanningAPI
 {
@@ -17,15 +20,23 @@ namespace PlanningAPI
                 options.UseSqlServer(config.ConnectionString);
             });
 
-   //         services.AddTransient<IRepository<Person>, PersonRepository>();
-   //         services.AddTransient<UserManager<User>>();
+            services.AddTransient<IRepository<Operator>, OperatorRepository>();
+			services.AddTransient<IRepository<Trip>, TripRepository>();
+			services.AddTransient<IRepository<UpdateLog>, UpdateLogRepository>();
 
-			//services.AddTransient((provider) => new PersonService(provider.GetRequiredService<IRepository<Person>>()));
-			//services.AddTransient((provider) => new AuthenticationService(
-			//	provider.GetRequiredService<UserManager<User>>(),
-			//	provider.GetRequiredService<IOptions<ApplicationConfiguration>>())
-			//);
-		}
+            services.AddTransient((provider) => new DomainServices(
+                provider.GetRequiredService<IRepository<Operator>>(),
+                provider.GetRequiredService<IRepository<Trip>>(),
+                provider.GetRequiredService<IRepository<UpdateLog>>()
+            ));
+
+            services.AddTransient((provider) => new OperatorService(provider.GetRequiredService<IRepository<Operator>>()));
+			services.AddTransient((provider) => new UpdateLogService(
+                provider.GetRequiredService<IRepository<UpdateLog>>(), 
+                provider.GetRequiredService<DomainServices>()
+            ));
+			
+        }
 
         public static void AddSwagger(this IServiceCollection services)
         {
