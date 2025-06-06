@@ -4,7 +4,7 @@ using System;
 
 namespace PlanningAPI.Service
 {
-    public class DomainServices
+    public class DomainServices : IDomainServices
     {
         private readonly IRepository<Operator> _operatorRepository;
         private readonly IRepository<Trip> _tripRepository;

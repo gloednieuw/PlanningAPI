@@ -10,13 +10,11 @@ namespace PlanningAPI.Controllers
     [Route("[controller]")]
     public class OperatorController : ControllerBase
     {
-        private readonly OperatorService _service;
-        private readonly DomainServices _domainServices;
+        private readonly IOperatorService _service;
 
-        public OperatorController(OperatorService service, DomainServices domainServices)
+        public OperatorController(IOperatorService service)
         {
             _service = service;
-            _domainServices = domainServices;
         }
 
         /// <summary>

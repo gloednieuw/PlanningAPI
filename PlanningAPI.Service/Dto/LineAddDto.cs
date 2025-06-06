@@ -9,13 +9,15 @@ namespace PlanningAPI.Service.Dto
 {
     public class LineAddDto
     {
+        public LineAddDto() { }
+
         public LineAddDto(int operatorNo, string linePlanningNumber) 
         {
             OperatorNo = operatorNo;
             LinePlanningNumber = linePlanningNumber;
         }
 
-        public int OperatorNo { get; }
+        public int OperatorNo { get; set; }
         public string LinePlanningNumber { get; set; }
 
         public static Line ToEntity(LineAddDto lineAddDto)

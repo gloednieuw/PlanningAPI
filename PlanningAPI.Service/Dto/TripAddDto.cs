@@ -14,6 +14,8 @@ namespace PlanningAPI.Service.Dto
         public DateTime DepartureTime { get; set; }
         public DateTime ArrivalTime { get; set; }
 
+        public TripAddDto() { }
+
         public static Trip ToEntity(TripAddDto dto)
         {
             return new Trip(dto.LineId, dto.DepartureTime, dto.ArrivalTime);

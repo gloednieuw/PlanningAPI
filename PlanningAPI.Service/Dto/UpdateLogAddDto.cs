@@ -9,6 +9,8 @@ namespace PlanningAPI.Service.Dto
 {
     public class UpdateLogAddDto
     {
+        public UpdateLogAddDto() { }
+
         public UpdateLogAddDto(int tripNo, DateTime updateTimestamp, UpdateLogStatus status) 
         {
             TripNo = tripNo;

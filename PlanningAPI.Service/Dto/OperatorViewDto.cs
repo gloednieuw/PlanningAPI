@@ -14,6 +14,8 @@ namespace PlanningAPI.Service.Dto
         public string ApiEndpoint { get; }
         public IEnumerable<LineListDto> Lines { get; }
 
+        public OperatorViewDto() { }
+
         private OperatorViewDto(int operatorId, string name, string apiEndpoint, IEnumerable<Line> lines)
         {
             OperatorId = operatorId;

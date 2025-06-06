@@ -13,6 +13,8 @@ namespace PlanningAPI.Service.Dto
         public string Name { get; }
         public string ApiEndpoint { get; }
 
+        public OperatorListDto() { }
+
         private OperatorListDto(int operatorId, string name, string apiEndpoint)
         {
             OperatorId = operatorId;

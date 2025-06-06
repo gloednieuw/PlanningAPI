@@ -4,7 +4,7 @@ using System;
 
 namespace PlanningAPI.Service
 {
-    public class OperatorService : IEntityService<Operator>
+    public class OperatorService : IOperatorService
     {
         private readonly IRepository<Operator> _repository;
 
@@ -23,6 +23,10 @@ namespace PlanningAPI.Service
         public async Task<OperatorViewDto> GetOperatorDetails(int operatorId)
         {
             var operatorEntity = await _repository.GetByIdAsync(operatorId);
+            if (operatorEntity == null)
+            {
+                throw new ArgumentException($"Operator with ID {operatorId} not found");
+            }
 
             return OperatorViewDto.FromEntity(operatorEntity);
         }

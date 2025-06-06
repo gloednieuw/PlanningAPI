@@ -12,6 +12,8 @@ namespace PlanningAPI.Service.Dto
         public int LineId { get; }
         public string LinePlanningNumber { get; }
 
+        public LineListDto() { }
+
         private LineListDto(int lineId, string linePlanningNumber)
         {
             LineId = lineId;

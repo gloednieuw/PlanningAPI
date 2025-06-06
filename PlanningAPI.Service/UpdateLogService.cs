@@ -4,12 +4,12 @@ using System;
 
 namespace PlanningAPI.Service
 {
-    public class UpdateLogService : IEntityService<UpdateLog>
+    public class UpdateLogService : IUpdateLogService
     {
         private readonly IRepository<UpdateLog> _repository;
-        private readonly DomainServices _domainServices;
+        private readonly IDomainServices _domainServices;
 
-        public UpdateLogService(IRepository<UpdateLog> repository, DomainServices domainServices)
+        public UpdateLogService(IRepository<UpdateLog> repository, IDomainServices domainServices)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _domainServices = domainServices ?? throw new ArgumentNullException(nameof(_domainServices));
