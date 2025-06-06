@@ -38,15 +38,14 @@
 
         private bool IsValid(int updateLogId, int tripNo, DateTime updateTimestamp, UpdateLogStatus status, List<string> validationErrors)
         {
-            if (updateLogId <= 0 || tripNo <= 0 || updateTimestamp == DateTime.MinValue || status == 0)
+            if (!IsValid(tripNo, updateTimestamp, status, validationErrors))
             {
-                validationErrors.Add("Update log is missing data");
                 return false;
             }
 
-            if (updateTimestamp > DateTime.Now)
+            if (updateLogId <= 0)
             {
-                validationErrors.Add("Update moment cannot be in the future");
+                validationErrors.Add("Update log is missing data");
                 return false;
             }
 

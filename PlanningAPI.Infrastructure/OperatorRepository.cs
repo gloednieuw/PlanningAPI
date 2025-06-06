@@ -44,6 +44,7 @@ namespace PlanningAPI.Infrastructure
 			var operatorEntity = await _dbContext.Operators
 				.AsNoTracking()
 				.Include(x => x.Lines)
+					.ThenInclude(x => x.Trips)
 				.FirstOrDefaultAsync(x => x.OperatorId == id);
 
 			return operatorEntity;

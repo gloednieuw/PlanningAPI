@@ -24,6 +24,17 @@
             return true;
         }
 
-        public IReadOnlyCollection<Line> Lines { get; set; }
+        private readonly List<Line> _lines = new();
+        public IReadOnlyCollection<Line> Lines => _lines.AsReadOnly();
+
+        public void AddLine(Line line)
+        {
+            if (_lines.Any(l => l.LinePlanningNumber == line.LinePlanningNumber))
+            {
+                throw new InvalidOperationException("Line with the same planning number already exists.");
+            }
+
+            _lines.Add(line);
+        }
     }
 }
