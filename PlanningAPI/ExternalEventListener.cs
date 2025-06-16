@@ -33,7 +33,7 @@ namespace PlanningAPI
 
             try
             {
-                await updateLogService.AddUpdateLogEntryForTrip(updateLogAddDto);
+                var succeed = await updateLogService.AddUpdateLogEntryForTrip(updateLogAddDto);
             }
             catch (ArgumentException ex)
             {

@@ -30,8 +30,8 @@ namespace PlanningAPI
                 provider.GetRequiredService<IRepository<UpdateLog>>()
             ));
 
-            services.AddTransient((provider) => new OperatorService(provider.GetRequiredService<IRepository<Operator>>()));
-			services.AddTransient((provider) => new UpdateLogService(
+            services.AddTransient<IOperatorService, OperatorService>((provider) => new OperatorService(provider.GetRequiredService<IRepository<Operator>>()));
+            services.AddTransient((provider) => new UpdateLogService(
                 provider.GetRequiredService<IRepository<UpdateLog>>(), 
                 provider.GetRequiredService<DomainServices>()
             ));
